@@ -8,6 +8,21 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+
+var config = require('config.json')('configs.json');
+
+const connection = mysql.createConnection({
+  host: config.mysql.host,
+  user: config.mysql.user,
+  password: config.mysql.password,
+  database: config.mysql.database,
+});
+
+connection.connect();
+
+global.db = connection;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
