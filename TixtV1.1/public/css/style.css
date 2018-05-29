@@ -69,19 +69,32 @@ th:not(:first-child), td:not(:first-child){
     color:#FFFFFF;
     background: #000091;
   }
+/* HEADER */
 
-  .Slider {
+/* SLIDER */
+.slider {
     width: 100%;
     height: 450px;
-    background:url(/img/slider.png) no-repeat center / cover;
+    background:url(../img/slider.png) no-repeat center / cover;
     display: block;
     position: relative;
 }
-.Slider h1 {
-    width: 100%;
+.slider h1 {
+    width: 77%;
     height: auto;
     color: #FFFFFF;
     font-weight: bold;
     position: absolute;
     top: 50%;
+    left: 20%;
+}
+
+.slider .recherche {
+    width: 50%;
+    height: 25px;
+    color: grey;
+	background: #FFFFFF;
+	position: absolute;
+	top: 78%;
+	left: 20%;
 }

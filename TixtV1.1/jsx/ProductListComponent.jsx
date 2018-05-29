@@ -28,8 +28,8 @@ class ProductListComponent extends React.Component {
  		return (
  			<div>
 				<Header header={this.header}/>
-				<Slider slider={this.slider}/>
 				<Login login={this.login}/>
+				<Slider Slider={this.index}/>
  			</div>
  		)
   	}
