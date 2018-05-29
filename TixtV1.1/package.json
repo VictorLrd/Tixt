@@ -14,8 +14,10 @@
   "author": "oboisse",
   "license": "ISC",
   "dependencies": {
+    "config.json": "0.0.4",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "mysql": "^2.15.0",
     "path": "^0.12.7",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
