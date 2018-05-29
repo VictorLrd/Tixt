@@ -1,7 +1,7 @@
 
 const React = require('react');
 
-class Index extends React.Component {
+class Header extends React.Component {
     render() {
       return (
         <div className="header">
@@ -16,4 +16,4 @@ class Index extends React.Component {
     }
   }
 
-module.exports = Index;
+module.exports = Header;

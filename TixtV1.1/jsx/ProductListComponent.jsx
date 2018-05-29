@@ -4,6 +4,8 @@ const React = require('react');
 const SearchBar = require('./SearchBar');
 const ProductTable = require('./ProductTable');
 const Header = require('./Header');
+const Slider = require('./Slider');
+const Login = require('./Login');
 
 class ProductListComponent extends React.Component {
 
@@ -26,6 +28,8 @@ class ProductListComponent extends React.Component {
  		return (
  			<div>
 				<Header header={this.header}/>
+				<Slider slider={this.slider}/>
+				<Login login={this.login}/>
  			</div>
  		)
   	}
