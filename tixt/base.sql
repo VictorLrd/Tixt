@@ -54,5 +54,14 @@ CREATE TABLE IF NOT EXISTS `location` (
   REFERENCES voiture(voiture_id)
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS `jour_disponible` (
+  `jour_disponible_id` int(5) NOT NULL AUTO_INCREMENT,
+  `voiture_id` int(5) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`jour_disponible_id`),
+  FOREIGN KEY (voiture_id)
+  REFERENCES voiture(voiture_id)
+) ENGINE=InnoDB;
+
 
 
