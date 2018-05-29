@@ -6,6 +6,7 @@ const express = require('express');
 const path = require('path');
 const _ = require('underscore');
 const ProductListComponent = React.createFactory(require('./components/ProductListComponent'));
+const AddVehiculeComponent = React.createFactory(require('./components/AddVehiculeComponent'));
 const data = require('./data/products.js');
 
 
@@ -32,8 +33,12 @@ var sql = "SELECT * FROM `utilisateur`";
 app.get('/barbero', function (req, res) {
   db.query(sql, function (err, results) {
     console.log(results);
-    res.send("COUCOU");
-
+    const htmlAddVehiculeComponent  = ReactDOMServer.renderToString(
+      AddVehiculeComponent()
+    );
+    res.render("addVehicule", {
+      component: htmlAddVehiculeComponent,
+    });
   });
 });
 
