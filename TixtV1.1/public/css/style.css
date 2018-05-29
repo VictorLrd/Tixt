@@ -23,3 +23,64 @@ th:not(:first-child), td:not(:first-child){
 .flag.flag-pt {background-position: -16px -22px}
 .flag.flag-re {background-position: -32px -22px}
 .flag.flag-tn {background-position: -48px -22px}
+
+
+.header {
+    width: 100%;
+    height: 100px;
+    background: #FFFFFF;
+    display: block;
+    position: relative;
+  }
+  .header .headerlogo {
+    width: 200px;
+    height: 100px;
+    float: left;
+  }
+  .header .headerlogo img {
+    width: 100%;
+    height: auto;
+  }
+  .header .menu {
+    width: 50%;
+    height: 75px;
+    float: right;
+    align-content: center;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .header .menu h1:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+  .header .menu h1{
+    width: 25%;
+    height: 100%;
+    color: #000091;
+    text-align: center;
+    font-size: 14px;
+    background: #FFFFFF;
+  }
+  .header .menu h1:hover{
+    color:#FFFFFF;
+    background: #000091;
+  }
+
+  .slider {
+    width: 100%;
+    height: 450px;
+    background:url(../../slider.png) no-repeat center / cover;
+    display: block;
+    position: relative;
+}
+.slider h1 {
+    width: 100%;
+    height: auto;
+    color: #FFFFFF;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+}

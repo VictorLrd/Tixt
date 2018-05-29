@@ -3,7 +3,7 @@
 const React = require('react');
 const SearchBar = require('./SearchBar');
 const ProductTable = require('./ProductTable');
-const Index = require('./index');
+const Header = require('./Header');
 
 class ProductListComponent extends React.Component {
 
@@ -25,9 +25,7 @@ class ProductListComponent extends React.Component {
  	render() {
  		return (
  			<div>
- 				<SearchBar onSearch={this.handleSearch} />
- 				<ProductTable products={this.state.products}/>
-				<Index index={this.index}/>
+				<Header header={this.header}/>
  			</div>
  		)
   	}
