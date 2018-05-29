@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import './style.css';
-import logo from '../../logo.png';
 
-class Header extends Component {
+const React = require('react');
+
+class Index extends React.Component {
     render() {
       return (
         <div className="header">
-        <img src={logo} className="headerlogo" alt="TIXT" />
           <div className="menu">
               <h1 className="inscription">M'inscrire</h1>
               <h1 className="connexion">Me connecter</h1>
@@ -18,4 +16,4 @@ class Header extends Component {
     }
   }
 
-export default Header;
+module.exports = Index;

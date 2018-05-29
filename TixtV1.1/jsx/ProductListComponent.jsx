@@ -3,6 +3,7 @@
 const React = require('react');
 const SearchBar = require('./SearchBar');
 const ProductTable = require('./ProductTable');
+const Index = require('./index');
 
 class ProductListComponent extends React.Component {
 
@@ -26,6 +27,7 @@ class ProductListComponent extends React.Component {
  			<div>
  				<SearchBar onSearch={this.handleSearch} />
  				<ProductTable products={this.state.products}/>
+				<Index index={this.index}/>
  			</div>
  		)
   	}
