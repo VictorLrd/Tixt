@@ -22,6 +22,7 @@ const connection = mysql.createConnection({
   user: config.mysql.user,
   password: config.mysql.password,
   database: config.mysql.database,
+  socketPath : '/Applications/MAMP/tmp/mysql/mysql.sock',
 });
 
 connection.connect();
@@ -30,17 +31,6 @@ global.db = connection;
 
 var sql = "SELECT * FROM `utilisateur`";
 
-app.get('/barbero', function (req, res) {
-  db.query(sql, function (err, results) {
-    console.log(results);
-    const htmlAddVehiculeComponent  = ReactDOMServer.renderToString(
-      AddVehiculeComponent()
-    );
-    res.render("addVehicule", {
-      component: htmlAddVehiculeComponent,
-    });
-  });
-});
 
 
 app.set('view engine', 'ejs');
@@ -65,6 +55,19 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/addVehicule', function (req, res) {
+  console.log("TEST");
+  const htmlAddVehiculeComponent  = ReactDOMServer.renderToString(
+    AddVehiculeComponent()
+  );
+  res.render("index", {
+    component: htmlAddVehiculeComponent,
+    context: JSON.stringify("")
+  });
+});
+
+
+
 app.get('/products', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -75,4 +78,4 @@ app.get('/products', function (req, res) {
   res.send(JSON.stringify(productContainingNameParam));
 });
 
-app.listen(3000);
+app.listen(4000);

@@ -2,7 +2,7 @@
     "mysql": {
       "host": "localhost",
       "user": "root",
-      "password": "",
-      "database": "d_tixt"
+      "password": "root",
+      "database": "db_tixt"
     }
   }

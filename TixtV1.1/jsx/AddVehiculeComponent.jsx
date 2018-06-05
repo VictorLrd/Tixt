@@ -1,11 +1,12 @@
 const React = require('react');
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
-class AddVehicule extends React.Component {
+class AddVehiculeComponent extends React.Component {
 
     constructor() {
         super();
         this.writeVehicule = this.writeVehicule.bind(this);
-        this.keyDownHandler = this.keyDownHandler.bind(this);
     }
 
     //Méthode appelée dès que le composant est chargé 
@@ -16,21 +17,14 @@ class AddVehicule extends React.Component {
     }
 
     writeVehicule() {
-
-        return fetch('/barbero')
-        .then((response) => {
-          console.log("dshjfnqdsjkfnsqdljkfnqdsjf");
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        console.log("AddVehicule");
     }
 
     keyDownHandler(event) {
         //On lance la recherche si l'utilisateur 
         //saisit la touche Enter
         if (event.keyCode == 13) {
-            this.writeUser();
+            this.writeVehicule();
         }
     }
 
@@ -41,6 +35,22 @@ class AddVehicule extends React.Component {
                     <input type="text"
                         className="form-control"
                         ref={(ref) => this.emailInput = ref}
+                        placeholder="" />
+                    <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.mdpInput = ref}
+                        placeholder="Mot de passe" />
+                        <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.emailInput = ref}
+                        placeholder="Email" />
+                    <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.mdpInput = ref}
+                        placeholder="Mot de passe" />
+                        <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.emailInput = ref}
                         placeholder="Email" />
                     <input type="text"
                         className="form-control"
@@ -48,7 +58,7 @@ class AddVehicule extends React.Component {
                         placeholder="Mot de passe" />
 
                     <span className="input-group-btn">
-                        <button onClick={this.writeUser} className="btn btn-primary" type="button">
+                        <button onClick={this.writeVehicule} className="btn btn-primary" type="button">
                             <span className="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
@@ -58,4 +68,4 @@ class AddVehicule extends React.Component {
     }
 }
 
-module.exports = AddVehicule;
+module.exports = AddVehiculeComponent;

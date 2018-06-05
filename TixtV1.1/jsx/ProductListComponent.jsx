@@ -5,8 +5,8 @@ const SearchBar = require('./SearchBar');
 const ProductTable = require('./ProductTable');
 const Header = require('./Header');
 const Slider = require('./Slider');
-const Vehicules = require('./Vehicules');
 const Login = require('./Login');
+const AddVehicule = require('./AddVehicule');
 
 class ProductListComponent extends React.Component {
 
@@ -25,12 +25,17 @@ class ProductListComponent extends React.Component {
 		});
 	}
 
+	writeVehicule() {
+		console.log("NIQUE TA MERE");
+	}
+
  	render() {
  		return (
  			<div>
 				<Header header={this.header}/>
-				<Slider Slider={this.slider}/>
-				<Vehicules Vehicules={this.Vehicules}/>
+				<Login login={this.login}/>
+				<Slider Slider={this.index}/>
+				<AddVehicule AddVehicule={this.AddVehicule}/>
  			</div>
  		)
   	}
