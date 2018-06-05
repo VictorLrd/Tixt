@@ -5,6 +5,7 @@ const SearchBar = require('./SearchBar');
 const ProductTable = require('./ProductTable');
 const Header = require('./Header');
 const Slider = require('./Slider');
+const Vehicules = require('./Vehicules');
 const Login = require('./Login');
 
 class ProductListComponent extends React.Component {
@@ -28,8 +29,8 @@ class ProductListComponent extends React.Component {
  		return (
  			<div>
 				<Header header={this.header}/>
-				<Login login={this.login}/>
-				<Slider Slider={this.index}/>
+				<Slider Slider={this.slider}/>
+				<Vehicules Vehicules={this.Vehicules}/>
  			</div>
  		)
   	}
