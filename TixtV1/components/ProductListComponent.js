@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 const React = require('react');
 const SearchBar = require('./SearchBar');
@@ -7,9 +7,6 @@ const Header = require('./Header');
 const Slider = require('./Slider');
 const Vehicules = require('./Vehicules');
 const Login = require('./Login');
-const AddVehicule = require('./AddVehicule');
-const Split = require('./Split');
-const Footer = require('./Footer');
 
 class ProductListComponent extends React.Component {
 
@@ -21,28 +18,22 @@ class ProductListComponent extends React.Component {
 
 	handleSearch(productName) {
 		const url = '/products?productName=' + productName;
-		$.get(url,  (data) => {
+		$.get(url, data => {
 			this.setState({
 				products: data
-			})
+			});
 		});
 	}
 
-	writeVehicule() {
-		console.log("NIQUE TA MERE");
+	render() {
+		return React.createElement(
+			'div',
+			null,
+			React.createElement(Header, { header: this.header }),
+			React.createElement(Slider, { Slider: this.slider }),
+			React.createElement(Vehicules, { Vehicules: this.Vehicules })
+		);
 	}
-
- 	render() {
- 		return (
- 			<div>
-				<Header header={this.header}/>
-				<Slider Slider={this.slider}/>
-				<Vehicules Vehicules={this.vehicules}/>
-				<Split Split={this.split}/>
-				<Footer Footer={this.footer}/>
- 			</div>
- 		)
-  	}
 }
 
 module.exports = ProductListComponent;
