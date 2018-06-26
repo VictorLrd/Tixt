@@ -12,7 +12,6 @@ connection.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
 });
-
 global.db = connection;
 
 
@@ -45,44 +44,23 @@ server.listen(4007);
 
 module.exports = app;
 
+var req = {
+          "body": {
+            "marque": "citro",
+            "modele": "c3",
+            "annee": "2000-10-23",
+            "km": "100000",
+            "nb_place": "5",
+            "energie": "essence",
+            "boite_vitesse": "manuel",
+            "adresse": "dqsdqda",
+            "prix": "25",
+            "contact": "321332",
+            "date_debut": "2018-10-01",
+            "date_fin": "2020-01-01",
+            "description": "voiture de location",
+            "voiture_id": "4"
+          }
+        }
 
-
-
-/*
-REQUETE NodeJS
-
-/utilisateur/:mail.:mdp
-
-  `utilisateurs_id` int(5) NOT NULL AUTO_INCREMENT,
-  `mail` varchar(250) NOT NULL,
-  `mdp` varchar(15) NOT NULL,
-  `prenom` varchar(100) NOT NULL,
-  `nom` varchar(100) NOT NULL,
-  `date_naissance` date NOT NULL,
-  `adresse` varchar(100) NOT NULL,
-  `code_postal` varchar(100) NOT NULL,
-  `ville` varchar(100) NOT NULL,
-  `pays` varchar(100) NOT NULL,
-
-
-/voiture
-
-  `voiture_id` int(5) NOT NULL AUTO_INCREMENT,
-  `utilisateurs_id` int(5) NOT NULL ,
-  `marque` varchar(100) NOT NULL,
-  `modele` varchar(100) NOT NULL,
-  `annee` date NOT NULL,
-  `km` int(8) NOT NULL,
-  `nb_place` int(2) NOT NULL,
-  `energie` varchar(100) NOT NULL,
-  `boite_vitesse` varchar(100) NOT NULL,
-  `adresse` varchar(100) NOT NULL,
-  `prix` int(6) NOT NULL,
-  `contact` varchar(100) NOT NULL,
-  `photos` BLOB NOT NULL,
-  `date_debut` date NOT NULL,
-  `date_fin` date NOT NULL,
-  `description` text NOT NULL,
-
-/
-*/
+requete.updateVehicule(req);
