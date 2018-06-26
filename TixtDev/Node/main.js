@@ -3,6 +3,8 @@ const mysql = require('mysql');
 var path = require('path');
 const bodyParser = require('body-parser');
 
+
+//COnnection BD
 var config = require('./configs.json');
 
 var connection = mysql.createConnection(config.mysql);
@@ -14,25 +16,29 @@ connection.connect(function(err) {
 global.db = connection;
 
 
+//API
+var requete = require('./requete.js');
 var app = express();
-
 app.use(express.json());
 
-
-var usersRouter = require('./users.js');
-
-app.get('/voiture', function (req, res) {
-    usersRouter.allVehicule();
-    res.send('root');
-});
-
-
-app.get('/', function(req, res) {
-    res.send('hello world');
+app.route('/voiture') 
+  .get(function (req, res) {
+    res.json(requete.allVehicule());
+  })
+  .post(function(req, res){
+    res.json(requete.addVoiture(req));
   });
 
+app.get('/login/:login.:mdp' , function (req, res) {
+  res.json(requete.login(req.login, req.mdp));
+})
+
+app.get('/inscription' , function (req, res) {
+  res.json(requete.signup(req));
+})
 
 
+//Serveur en ecoute :
 var http = require('http');
 var server = http.createServer(app);
 server.listen(4007);
@@ -41,12 +47,7 @@ module.exports = app;
 
 
 
-var sql = "SELECT * FROM `voiture`";
 
-db.query(sql, function (err, results) {
-  if (err) throw err;
-  console.log(results);
-});
 /*
 REQUETE NodeJS
 

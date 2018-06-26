@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-exports.signup = function (req, res) {
-  message = '';
-  if (req.method == "POST") {
+exports.signup = function (req) {
     var post = req.body;
     var mail = post.mail;
     var mdp = post.mdp;
@@ -15,81 +13,48 @@ exports.signup = function (req, res) {
     var ville = post.ville;
     var pays = post.pays;
 
-    var sql = "INSERT INTO `utilisateur` (`utilisateurs_id`, `mail`, `mdp`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postal`, `ville`, `pays`) VALUES " + mail + "','" + mdp + "','" + prenom + "','" + nom + "','" + date_naissance + "','" + adresse + "','" + code_postal + "','" + ville + "','" + pays + "')";
+    var sql = "INSERT INTO `utilisateur` ( `mail`, `mdp`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postal`, `ville`, `pays`) VALUES ('" + mail + "','" + mdp + "','" + prenom + "','" + nom + "','" + date_naissance + "','" + adresse + "','" + code_postal + "','" + ville + "','" + pays + "')";
     var query = db.query(sql, function (err, result) {
-
-      message = "Félicitation ! Vous avez votre compte !";
-      res.render('signup.ejs', {
-        message: message
-      });
-    });
-
-  } else {
-    res.render('signup');
-  }
-};
-
-exports.login = function (req, res) {
-  var message = '';
-  var sess = req.session;
-
-  if (req.method == "POST") {
-    var post = req.body;
-    var mail = post.mail;
-    var pass = post.password;
-
-    var sql = "SELECT utilisateurs_id, mail, prenom FROM `utilisateur` WHERE `mail`='" + mail + "' and password = '" + pass + "'";
-    db.query(sql, function (err, results) {
-      if (results.length) {
-        req.session.userId = results[0].id;
-        req.session.user = results[0];
-        res.redirect('/home/dashboard');
+      if (result) {
+        message = "Félicitation ! Vous avez votre compte !";
+        console.log(message, result);
+        return result;
       } else {
-        message = 'Erreur de login';
-        res.render('index.ejs', {
-          message: message
-        });
+        console.log(err);
+        return("Error");
       }
-
     });
-  } else {
-    res.render('index.ejs', {
-      message: message
-    });
+};
+/*{
+  "body": {
+    "mail": "",
+    "mdp": "",
+    "prenom": "",
+    "nom": "",
+    "date_naissance": "",
+    "adresse": "",
+    "code_postal": "",
+    "ville": "",
+    "pays": "",
   }
+} */
 
-};
+exports.login = function (mail, pass) {
 
-
-exports.dashboard = function (req, res, next) {
-
-  var config = require('config.json')('./configs.json');
-  var user = req.session.user,
-    userId = req.session.userId;
-  if (userId == null) {
-    res.redirect("/login");
-    return;
-  }
-
-  var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
-
-  db.query(sql, function (err, results) {
-    res.render('dashboard.ejs', {
-      user: user
+    var sql = "SELECT * FROM `utilisateur` WHERE `mail`='" + mail + "' and mdp = '" + pass + "'";
+    db.query(sql, function (err, results) {
+      if (results) {
+        console.log(results);
+        return result;
+      } else {
+        return("Error")
+      }
     });
-  });
+
 };
 
-exports.logout = function (req, res) {
-  req.session.destroy(function (err) {
-    res.redirect("/login");
-  })
-};
-
-exports.addVoiture = function (req, res) {
-  var sess = req.session;
-  message = '';
-  if (req.method == "POST") {
+//mettre en place des if
+exports.addVoiture = function (req) {
     var post = req.body;
     var marque = post.marque;
     var modele = post.modele;
@@ -104,9 +69,9 @@ exports.addVoiture = function (req, res) {
     var date_debut = post.date_debut;
     var date_fin = post.date_fin;
     var description = post.description;
-    var userId = req.session.userId;
+    var userId = req.userId;
 
-    var sql = "INSERT INTO `voiture` (`voiture_id`, `utilisateurs_id`, `marque`, `modele`, `annee`, `km`, `nb_place`, `energie`, `boite_vitesse`, `adresse`, `prix`, `contact`, `date_debut`, `date_fin`, `description`) VALUES ('" + userId + "','" + marque + "','" + modele + "','" + annee + "','" + km + "','" + nb_place + "','" + energie + "','" + boite_vitesse + "','" + adresse + "','" + prix + "','" + contact + "','" + date_debut + "','" + date_fin + "','" + description + "')";
+    var sql = "INSERT INTO `voiture` ( `utilisateurs_id`, `marque`, `modele`, `annee`, `km`, `nb_place`, `energie`, `boite_vitesse`, `adresse`, `prix`, `contact`, `date_debut`, `date_fin`, `description`) VALUES ('" + userId + "','" + marque + "','" + modele + "','" + annee + "','" + km + "','" + nb_place + "','" + energie + "','" + boite_vitesse + "','" + adresse + "','" + prix + "','" + contact + "','" + date_debut + "','" + date_fin + "','" + description + "')";
     var query = db.query(sql, function (err, result) {
       var loop = new Date(date_debut);
       while (loop <= date_fin) {
@@ -116,23 +81,35 @@ exports.addVoiture = function (req, res) {
         loop = new Date(newDate);
       }
       message = "Félicitation ! Vous avez ajouter votre véhicule !";
-      res.render('signup.ejs', {
-        message: message
-      });
+      return message;
     });
-
-  } else {
-    res.render('signup');
-  }
 };
+/* {
+  "body": {
+    "marque": "",
+    "modele": "",
+    "annee": "",
+    "km": "",
+    "nb_place": "",
+    "energie": "",
+    "boite_vitesse": "",
+    "adresse": "",
+    "prix": "",
+    "contact": "",
+    "date_debut": "",
+    "date_fin": "",
+    "description": ""
+  },
+  "userId": ""
+} */
 
-exports.allVehicule = function (req, res, next) {
+exports.allVehicule = async function () {
 
   var sql = "SELECT * FROM `voiture`";
 
   db.query(sql, function (err, results) {
     if (err) throw err;
-    console.log(results);
+    return results;
   });
 };
 
