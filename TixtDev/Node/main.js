@@ -4,7 +4,7 @@ var path = require('path');
 const bodyParser = require('body-parser');
 
 
-//COnnection BD
+//Connection BD
 var config = require('./configs.json');
 
 var connection = mysql.createConnection(config.mysql);
@@ -44,6 +44,8 @@ server.listen(4007);
 
 module.exports = app;
 
+
+/*
 var req = {
           "body": {
             "marque": "citro",
@@ -64,3 +66,4 @@ var req = {
         }
 
 requete.updateVehicule(req);
+*/
