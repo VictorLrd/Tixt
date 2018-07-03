@@ -74,6 +74,14 @@ app.get('/VehiculeUtilisateur/:id', function (req, res) {
     })
 })
 
+app.get('/filtreVehicule/:marque.:energie.:nb_place.:boite_vitesse.:prix', function (req, res) {
+    requete.filtreVehicule(req.params.marque, req.params.energie, req.params.nb_place, req.params.boite_vitesse, req.params.prix, function(err,result){ 
+        res.json(result);
+    })
+})
+
+
+
 //Serveur en ecoute :
 var http = require('http');
 var server = http.createServer(app);

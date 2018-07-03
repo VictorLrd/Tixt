@@ -273,6 +273,49 @@ exports.updateVehicule = function(req){
   }
 } */
 
+exports.filtreVehicule = function(marque,energie,nb_place,boite_vitesse,prix, cb){
+    var sql = "SELECT * FROM `voiture` "
+    var sqlTab = [];
+    var i = 0;
+    if(marque != "default"){
+      sqlTab[i] = " marque = '" + marque + "' " ;
+      i++
+    }
+    if(energie != "default"){
+      sqlTab[i] = " energie = '" + energie + "' ";
+      i++
+    }
+    if(nb_place != "default"){
+      sqlTab[i] = " annb_place = '" + nb_place + "' " ;
+      i++
+    }
+    if(boite_vitesse != "default"){
+      sqlTab[i] = " boite_vitesse = '" + boite_vitesse + "' " ;
+      i++
+    }
+    if(prix != "default"){
+      sqlTab[i] = " prix = '" + prix + "' " ;
+      i++
+    }
+
+    if(i > 0){
+      sql += "WHERE" + sqlTab[0];
+      for(j=1 ; j < sqlTab.length ; j++ ) {
+        sql += " AND " + sqlTab[j]; 
+      }
+    }
+
+    console.log(sql);
+
+    db.query(sql, function (err, results) {
+      if (results) {
+        cb(undefined, JSON.parse(JSON.stringify(results)));
+      } else {
+        cb(undefined,"Error")
+      }
+    });
+  
+}
 
 
 // location
@@ -319,72 +362,3 @@ var req = {
   }
 
 }
-
-
-
-
-{ test:
-  [ { voiture_id: 1,
-      utilisateurs_id: 2,
-      marque: 'Bentz',
-      modele: 'bb',
-      annee: '2018-06-26T22:00:00.000Z',
-      km: 69,
-      nb_place: 2,
-      energie: 'elect',
-      boite_vitesse: '4',
-      adresse: 'azdqs',
-      prix: 50000,
-      contact: '07332',
-      photos: null,
-      date_debut: '2018-06-13T22:00:00.000Z',
-      date_fin: '2018-06-13T22:00:00.000Z',
-      description: 'dzacqdsvsqxwzcaezqss' },
-    { voiture_id: 2,
-      utilisateurs_id: 2,
-      marque: 'Freari',
-      modele: 'bb',
-      annee: '2018-06-26T22:00:00.000Z',
-      km: 69,
-      nb_place: 2,
-      energie: 'elect',
-      boite_vitesse: '4',
-      adresse: 'azdqs',
-      prix: 50000,
-      contact: '07332',
-      photos: null,
-      date_debut: '2018-06-13T22:00:00.000Z',
-      date_fin: '2018-06-13T22:00:00.000Z',
-      description: 'dzacqdsvsqxwzcaezqss' },
-    { voiture_id: 3,
-      utilisateurs_id: 1,
-      marque: 'Porche',
-      modele: 'bb',
-      annee: '2018-06-26T22:00:00.000Z',
-      km: 69,
-      nb_place: 2,
-      energie: 'elect',
-      boite_vitesse: '4',
-      adresse: 'azdqs',
-      prix: 50000,
-      contact: '07332',
-      photos: null,
-      date_debut: '2018-06-13T22:00:00.000Z',
-      date_fin: '2018-06-13T22:00:00.000Z',
-      description: 'dzacqdsvsqxwzcaezqss' },
-    { voiture_id: 4,
-      utilisateurs_id: 2,
-      marque: 'citro',
-      modele: 'c3',
-      annee: '2000-10-22T22:00:00.000Z',
-      km: 100000,
-      nb_place: 5,
-      energie: 'essence',
-      boite_vitesse: 'manuel',
-      adresse: 'dqsdqda',
-      prix: 25,
-      contact: '321332',
-      photos: [Object],
-      date_debut: '2018-09-30T22:00:00.000Z',
-      date_fin: '2019-12-31T23:00:00.000Z',
-      description: 'voiture de location' } ] }

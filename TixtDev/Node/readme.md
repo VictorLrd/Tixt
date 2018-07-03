@@ -138,3 +138,15 @@ Supprime la voiture enregistrer dans la base de donnée
 > Get /VehiculeUtilisateur/:id
 
 Retourne la liste de tous les véhicules de l'utilsateur id
+
+> Get /filtreVehicule/:marque.:energie.:nb_place.:boite_vitesse.:prix
+
+Retourne une liste de vehicules avec different filtre :
+
+    -marque
+    -ennergie
+    -nombre de place
+    -boite de vitesse
+    -prix
+    
+Pour ne pas utiliser un filtre passer " default " dans la requette
