@@ -20,37 +20,62 @@ var requete = require('./requete.js');
 var app = express();
 app.use(express.json());
 
+app.route('/voiture') 
+  .get(function (req, res) {
+    requete.allVehicule(function(err,result){ 
+        res.json(result);
+    })
+  })
+  .post(function(req, res){
+    requete.addVoiture(req,function(err,result){ 
+        res.json(result);
+    })
+});
 
   app.get('/voiture' , function (req, res) {
     res.json({ user: 'tobi' })
 })
 
 app.get('/login/:login.:mdp' , function (req, res) {
-  res.json(requete.login(req.params.login, req.params.mdp));
+    requete.login(req.params.login, req.params.mdp, function(err,result) { 
+     res.json(result);
+  })
 })
 
-app.post('/inscription' , function (req, res) {
-  res.json(requete.signup(req));
+app.post('/inscription' , function (req, res,) {
+    requete.signup(req,function(err,result){ 
+    res.json(result);
+  })
 })
 
 app.post('/updateUtilisateur', function (req, res) {
-    res.json(requete.updateUtilisateur(req));
+  requete.updateUtilisateur(req,function(err,result){ 
+      res.json(result);
+  })
 })
 
 app.get('/delUtilisateur/:id', function (req, res) {
-    res.json(requete.delUtilisateur(req.params.id));
+  requete.delUtilisateur(req.params.id,function(err,result){ 
+      res.json(result);
+  })
 })
 
-app.post('/updateVehicule', function (req, res) {
-    res.json(requete.updateVehicule(req));
+app.post('/updateVehicule', function (req, res,) {
+    requete.updateVehicule(req,function(err,result){ 
+        res.json(result);
+    })
 })
 
 app.post('/delVoiture/:id', function (req, res) {
-    res.json(requete.delVoiture(rereq.params.id));
+    requete.delVoiture(rereq.params.id,function(err,result){ 
+        res.json(result);
+    })
 })
 
 app.get('/VehiculeUtilisateur/:id', function (req, res) {
-    res.json(requete.VehiculeUtilisateur(req.params.id));
+    requete.VehiculeUtilisateur(req.params.id, function(err,result){ 
+        res.json(result);
+    })
 })
 
 //Serveur en ecoute :
