@@ -52,8 +52,7 @@ app.post('/delVoiture/:id', function (req, res) {
     res.json(requete.delVoiture(rereq.params.id));
 })
 
-
-app.get('/VehiculeUtilisateur', function (req, res) {
+app.get('/VehiculeUtilisateur/:id', function (req, res) {
     res.json(requete.VehiculeUtilisateur(req.params.id));
 })
 
