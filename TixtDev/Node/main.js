@@ -1,8 +1,6 @@
-var express = require('express');
-const mysql = require('mysql');
-var path = require('path');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+var express = require("express");
+var mysql = require("mysql");
+var cors = require("cors");
 
 //  Connection BD
 
