@@ -1,13 +1,9 @@
 "use strict"
 
 const React = require('react');
-const SearchBar = require('./SearchBar');
-const ProductTable = require('./ProductTable');
 const Header = require('./Header');
 const Slider = require('./Slider');
 const Vehicules = require('./Vehicules');
-const Login = require('./Login');
-const AddVehicule = require('./AddVehicule');
 const Split = require('./Split');
 const Footer = require('./Footer');
 

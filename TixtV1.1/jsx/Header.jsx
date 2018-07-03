@@ -4,6 +4,7 @@ class Header extends React.Component {
     render() {
       return (
         <div className="header">
+          <div className="wrapperhead">
           <div className="headerlogo"/>
           <div className="menu">
               <h1 className="inscription">M'inscrire</h1>
@@ -11,6 +12,7 @@ class Header extends React.Component {
               <h1 className="infos">Plus d'infos ?</h1>
               <h1 className="louer">Louer ma voiture</h1>
           </div>
+        </div>
         </div>
       );
     }
