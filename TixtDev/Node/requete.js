@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 
@@ -44,9 +44,9 @@ exports.signup = function (req, cb) {
   }
 } */
 
-exports.login = function (mail, pass,cb) {
-  if (mail == null || pass == null){
-    cb(undefined,"Error");
+exports.login = function (mail, pass, cb) {
+  if (mail === null || pass === null){
+    cb("Error",undefined);
   }else {
     var sql = "SELECT * FROM `utilisateur` WHERE `mail`='" + mail + "' and mdp = '" + pass + "'";
     db.query(sql, function (err, results) {
@@ -61,7 +61,7 @@ exports.login = function (mail, pass,cb) {
 };
 
 exports.delUtilisateur = function(utilisateurs_id, cb){
-  if (utilisateurs_id == null){
+  if (utilisateurs_id === null){
     cb(undefined,"Error");
   }else {
   var sql = "DELETE FROM utilisateur WHERE utilisateurs_id = '"+ utilisateurs_id + "'";
@@ -73,7 +73,7 @@ exports.delUtilisateur = function(utilisateurs_id, cb){
 };
 
 exports.updateUtilisateur = function(req, cb){
-  if (req == null){
+  if (req === null){
     cb(undefined,"Error");
   }else {
   id = req.utilisateurs_id;
@@ -121,7 +121,7 @@ exports.updateUtilisateur = function(req, cb){
 } */
 
 exports.addVehicule= function (req, cb) {
-  if (req == null){
+  if (req === null){
     cb(undefined,"Error");
   }else {
     var post = req.body;
@@ -175,7 +175,7 @@ exports.addVehicule= function (req, cb) {
 } */
 
 exports.delVoiture = function(voiture_id,cb){
-  if (voiture_id == null){
+  if (voiture_id === null){
     cb(undefined,"Error");
   }else {
   var sql = "DELETE FROM utilisateur WHERE voiture_id = '"+ voiture_id + "'";
@@ -197,7 +197,7 @@ exports.allVehicule = function (cb) {
 
 
 exports.VehiculeUtilisateur = function (utilisateurs_id, cb) {
-  if (utilisateurs_id == null){
+  if (utilisateurs_id === null){
     cb(undefined,"Error");
   }else {
   var sql = "SELECT * FROM `voiture` WHERE utilisateurs_id = '" + utilisateurs_id + "' ";
@@ -213,7 +213,7 @@ exports.VehiculeUtilisateur = function (utilisateurs_id, cb) {
 };
 
 exports.updateVehicule = function(req){
-  if (req == null){
+  if (req === null){
     cb(undefined,"Error");
   }else {
   var post = req.body;
@@ -253,7 +253,7 @@ exports.updateVehicule = function(req){
   });
 }
 };
-/* {
+/*{
   "body": {
     "marque": "",
     "modele": "",
@@ -277,23 +277,23 @@ exports.filtreVehicule = function(marque,energie,nb_place,boite_vitesse,prix, cb
     var sql = "SELECT * FROM `voiture` "
     var sqlTab = [];
     var i = 0;
-    if(marque != "default"){
+    if(marque !== "default"){
       sqlTab[i] = " marque = '" + marque + "' " ;
       i++
     }
-    if(energie != "default"){
+    if(energie !== "default"){
       sqlTab[i] = " energie = '" + energie + "' ";
       i++
     }
-    if(nb_place != "default"){
+    if(nb_place !== "default"){
       sqlTab[i] = " annb_place = '" + nb_place + "' " ;
       i++
     }
-    if(boite_vitesse != "default"){
+    if(boite_vitesse !== "default"){
       sqlTab[i] = " boite_vitesse = '" + boite_vitesse + "' " ;
       i++
     }
-    if(prix != "default"){
+    if(prix !== "default"){
       sqlTab[i] = " prix = '" + prix + "' " ;
       i++
     }
@@ -316,12 +316,6 @@ exports.filtreVehicule = function(marque,energie,nb_place,boite_vitesse,prix, cb
     });
   
 }
-
-
-// location
-
-//recherche voiture libre suivant date
-//recherche voiture
 
 
 exports.addLocation = function(req, res){

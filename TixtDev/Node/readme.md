@@ -150,3 +150,23 @@ Retourne une liste de vehicules avec different filtre :
     -prix
     
 Pour ne pas utiliser un filtre passer " default " dans la requette
+
+
+## 3 - Eslint
+
+La partie Nodeest composé de eslint avec comme fichier de configuration 
+
+module.exports = {
+    "env": {
+      "node": 1,
+      "browser": 1
+    },
+    "globals": {
+      "exampleGlobalVariable": true
+    },
+    "rules": {
+      "eqeqeq": 1
+    },
+    "plugins": [
+    ]
+};
