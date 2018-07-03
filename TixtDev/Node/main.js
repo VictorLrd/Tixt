@@ -30,30 +30,30 @@ app.route('/voiture')
     res.json(requete.addVoiture(req,function(err,result){ 
         res.json(result);
     }));
-  });
+});
 
 app.get('/login/:login.:mdp' , function (req, res) {
-  res.json(requete.login(req.params.login, req.params.mdp,function(err,result){ 
-       res.json(result);
-    }));
+res.json(requete.login(req.params.login, req.params.mdp,function(err,result){ 
+     res.json(result);
+  }));
 })
 
 app.post('/inscription' , function (req, res,) {
-  res.json(requete.signup(req,function(err,result){ 
-      res.json(result);
-    }));
+res.json(requete.signup(req,function(err,result){ 
+    res.json(result);
+  }));
 })
 
 app.post('/updateUtilisateur', function (req, res) {
-    res.json(requete.updateUtilisateur(req,function(err,result){ 
-        res.json(result);
-    }));
+  res.json(requete.updateUtilisateur(req,function(err,result){ 
+      res.json(result);
+  }));
 })
 
 app.get('/delUtilisateur/:id', function (req, res) {
-    res.json(requete.delUtilisateur(req.params.id,function(err,result){ 
-        res.json(result);
-    }));
+  res.json(requete.delUtilisateur(req.params.id,function(err,result){ 
+      res.json(result);
+  }));
 })
 
 app.post('/updateVehicule', function (req, res,) {
