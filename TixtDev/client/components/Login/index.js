@@ -1,94 +1,61 @@
-import React, { Component } from 'react'
-import { Form, Input, DatePicker } from 'antd';
-const FormItem = Form.Item;
+const React = require('react');
 
+class Login extends React.Component {
 
+    constructor() {
+        super();
+        this.writeUser = this.writeUser.bind(this);
+        this.keyDownHandler = this.keyDownHandler.bind(this);
+    }
 
-class Login extends Component {
-  state = {
-    confirmDirty: false,
-    autoCompleteResult: [],
-  };
+    //Méthode appelée dès que le composant est chargé 
+    //dans le navigateur
+    componentDidMount() {
+        this.mdpInput.focus();
+        this.emailInput.focus();
+    }
 
-  render() {
+    writeUser() {
 
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-      },
-    };
+        return fetch('/barbero')
+        .then((response) => {
+          console.log("dshjfnqdsjkfnsqdljkfnqdsjf");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
 
+    keyDownHandler(event) {
+        //On lance la recherche si l'utilisateur 
+        //saisit la touche Enter
+        if (event.keyCode == 13) {
+            this.writeUser();
+        }
+    }
 
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormItem
-            {...formItemLayout}
-            label="E-mail"
-          >
-          <Input type="text" name="name" />
-        </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Mot de passe"
-        >
-        <Input type="password" />
-        </FormItem>
-        <FormItem
-            {...formItemLayout}
-            label="Prénom"
-          >
-          <Input type="text" name="name" />
-        </FormItem>
-        <FormItem
-            {...formItemLayout}
-            label="Nom"
-          >
-          <Input type="text" name="name" />
-        </FormItem>
-        <FormItem
-            {...formItemLayout}
-            label="Année de naissance"
-          >
-          <DatePicker />
-        </FormItem>
-        <FormItem
-            {...formItemLayout}
-            label="Adresse"
-          >
-          <Input type="text" name="name" />
-        </FormItem>
-        <FormItem
-            {...formItemLayout}
-            label="Code Postal"
-          >
-          <Input type="text" name="name" />
-        </FormItem>
-        <FormItem
-            {...formItemLayout}
-            label="Ville"
-          >
-          <Input type="text" name="name" />
-        </FormItem>
-        <FormItem
-            {...formItemLayout}
-            label="Pays"
-          >
-          <Input type="text" name="name" />
-        </FormItem>
-        <FormItem
-            {...formItemLayout}
-            label="Votre photo de profil"
-          >
-       </FormItem>
-      </Form>
-    );
-  }
+    render() {
+        return (
+            <div className="form-group">
+                <div className="input-group col-md-6">
+                    <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.emailInput = ref}
+                        placeholder="Email" />
+                    <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.mdpInput = ref}
+                        placeholder="Mot de passe" />
+
+                    <span className="input-group-btn">
+                        <button onClick={this.writeUser} className="btn btn-primary" type="button">
+                            <span className="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        )
+    }
 }
 
-
-export default Login;
+module.exports = Login;

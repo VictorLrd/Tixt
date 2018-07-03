@@ -27,3 +27,11 @@
     left: 15%;
   }
   
+@media (max-width:1024px) {
+  .split h1 {
+    font-size: 35px;
+  }
+  .split h2 {
+    font-size: 25px;
+  }
+}

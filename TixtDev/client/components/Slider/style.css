@@ -1,7 +1,7 @@
 .slider {
     width: 100%;
     height: 450px;
-    background:url(../../media/img/slider.png) no-repeat center / cover;
+    background:url(https://www.carmagazine.co.uk/Images/PageFiles/67400/pug-003.jpg) no-repeat center / cover;
     display: block;
     position: relative;
 }
@@ -41,4 +41,13 @@
 .slider .content button{
 	width: 13%;
 	height: auto;
+}
+@media (max-width:1024px) {
+    .header .slider h1 {
+
+        font-size: 30px !important;
+        top: 40% !important;
+        left: 20% !important;
+    
+    }
 }

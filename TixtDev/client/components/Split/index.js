@@ -1,22 +1,15 @@
 const React = require('react');
+import './style.css';
 
 class Split extends React.Component {
-  render() {
-    return React.createElement(
-      "div",
-      { className: "split" },
-      React.createElement(
-        "h1",
-        null,
-        "Louer une voiture dans la France enti\xE8re ? C'est possible !"
-      ),
-      React.createElement(
-        "h2",
-        null,
-        "TIXT vous propose des centaines de point de retrait \xE0 travers l'H\xE9xagone."
-      )
-    );
+    render() {
+      return (
+        <div className="split">
+          <h1>Louer une voiture dans la France entière ? C'est possible !</h1>
+          <h2>TIXT vous propose des centaines de point de retrait à travers l'Héxagone.</h2>
+        </div>
+      );
+    }
   }
-}
 
 module.exports = Split;

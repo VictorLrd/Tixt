@@ -29,47 +29,42 @@ class AddVehiculeComponent extends React.Component {
     }
 
     render() {
-        return React.createElement(
-            'div',
-            { className: 'form-group' },
-            React.createElement(
-                'div',
-                { className: 'input-group col-md-1' },
-                React.createElement('input', { type: 'text',
-                    className: 'form-control',
-                    ref: ref => this.emailInput = ref,
-                    placeholder: '' }),
-                React.createElement('input', { type: 'text',
-                    className: 'form-control',
-                    ref: ref => this.mdpInput = ref,
-                    placeholder: 'Mot de passe' }),
-                React.createElement('input', { type: 'text',
-                    className: 'form-control',
-                    ref: ref => this.emailInput = ref,
-                    placeholder: 'Email' }),
-                React.createElement('input', { type: 'text',
-                    className: 'form-control',
-                    ref: ref => this.mdpInput = ref,
-                    placeholder: 'Mot de passe' }),
-                React.createElement('input', { type: 'text',
-                    className: 'form-control',
-                    ref: ref => this.emailInput = ref,
-                    placeholder: 'Email' }),
-                React.createElement('input', { type: 'text',
-                    className: 'form-control',
-                    ref: ref => this.mdpInput = ref,
-                    placeholder: 'Mot de passe' }),
-                React.createElement(
-                    'span',
-                    { className: 'input-group-btn' },
-                    React.createElement(
-                        'button',
-                        { onClick: this.writeVehicule, className: 'btn btn-primary', type: 'button' },
-                        React.createElement('span', { className: 'glyphicon glyphicon-search' })
-                    )
-                )
-            )
-        );
+        return (
+            <div className="form-group">
+                <div className="input-group col-md-1">
+                    <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.emailInput = ref}
+                        placeholder="" />
+                    <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.mdpInput = ref}
+                        placeholder="Mot de passe" />
+                        <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.emailInput = ref}
+                        placeholder="Email" />
+                    <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.mdpInput = ref}
+                        placeholder="Mot de passe" />
+                        <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.emailInput = ref}
+                        placeholder="Email" />
+                    <input type="text"
+                        className="form-control"
+                        ref={(ref) => this.mdpInput = ref}
+                        placeholder="Mot de passe" />
+
+                    <span className="input-group-btn">
+                        <button onClick={this.writeVehicule} className="btn btn-primary" type="button">
+                            <span className="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        )
     }
 }
 
