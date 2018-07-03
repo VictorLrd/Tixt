@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { HomeLayout } from './layouts.js'
+import './App.css'
 
 export default class App extends Component {
 

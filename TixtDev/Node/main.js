@@ -32,6 +32,10 @@ app.route('/voiture')
     })
 });
 
+  app.get('/voiture' , function (req, res) {
+    res.json({ user: 'tobi' })
+})
+
 app.get('/login/:login.:mdp' , function (req, res) {
     requete.login(req.params.login, req.params.mdp, function(err,result) { 
      res.json(result);

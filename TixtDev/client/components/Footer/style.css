@@ -19,7 +19,7 @@
   .footer .menu .footerlogo {
     width: 200px;
     height: 100px;
-	  background:url(../img/logo.png) no-repeat center / cover;
+	  background:url(../../media/img/logo.png) no-repeat center / cover;
   }
   .footer .menu h1:before {
     content: "";
