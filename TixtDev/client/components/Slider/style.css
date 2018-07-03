@@ -42,12 +42,3 @@
 	width: 13%;
 	height: auto;
 }
-@media (max-width:1024px) {
-    .header .slider h1 {
-
-        font-size: 30px !important;
-        top: 40% !important;
-        left: 20% !important;
-    
-    }
-}
