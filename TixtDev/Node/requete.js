@@ -53,6 +53,14 @@ exports.login = function (mail, pass) {
 
 };
 
+exports.delUtilisateur = function(utilisateurs_id){
+  var sql = "DELETE FROM utilisateur WHERE utilisateurs_id = '"+ utilisateurs_id + "'";
+  db.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("del");
+  });
+};
+
 exports.updateUtilisateur = function(req){
   id = req.utilisateurs_id;
   req = req.body;
@@ -148,16 +156,24 @@ exports.addVehicule= function (req) {
   "utilisateurs_id": ""
 } */
 
+exports.delVoiture = function(voiture_id){
+  var sql = "DELETE FROM utilisateur WHERE voiture_id = '"+ voiture_id + "'";
+  db.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("del");
+  });
+};
+
 exports.allVehicule = function () {
 
   var sql = "SELECT * FROM `voiture`";
 
   db.query(sql, function (err, results) {
     if (err) throw err;
+    console.log(results);
     return results;
   });
 };
-
 
 
 exports.VehiculeUtilisateur = function (utilisateurs_id) {
@@ -232,24 +248,11 @@ exports.updateVehicule = function(req){
 } */
 
 
-/*exports.vehiculeUser = function (req, res, next) {
 
-  var config = require('config.json')('./configs.json');
- /* var user = req.session.user,
-    userId = req.session.userId,
-  /*if (userId == null) {
-    res.redirect("/login");
-    return;
-  }
-  var sql = "SELECT * FROM `voiture` WHERE `voiture.utilisateurs_id`'" + userId + "'";
+//supprimer utilisateur, vooiture, location
 
-  db.query(sql, function (err, results) {
-    res.render('dashboard.ejs', {
-      user: user
-    });
-  });
-};*/
-
+//recherche voiture libre suivant date
+//recherche voiture
 
 
 exports.addLocation = function(req, res){
