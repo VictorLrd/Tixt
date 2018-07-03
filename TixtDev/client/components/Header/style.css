@@ -1,0 +1,46 @@
+.header {
+    width: 100%;
+    height: auto;
+    min-height: 740px;
+    display: block;
+	position: relative;
+  margin: 0 auto;
+  background: url(../img/visu.png) no-repeat center / cover;
+  }
+  .header .wrapperhead {
+    max-width: 1024px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .header .headerlogo {
+    width: 200px;
+    height: 100px;
+    float: left;
+	background:url(../img/logo.png) no-repeat center / cover;
+  }
+  .header .menu {
+    width: 50%;
+    height: 75px;
+    float: right;
+    align-content: center;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .header .menu h1:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+  .header .menu h1{
+    width: 25%;
+    height: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+  }
+  .header .menu h1.louer{
+    color: #1cc79e;
+  }
