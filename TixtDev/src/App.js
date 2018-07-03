@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import cors from 'cors';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { HomeLayout } from './layouts.js'
+import { Inscription } from './layouts.js'
+
 import './App.css'
 
 export default class App extends Component {
@@ -14,8 +17,8 @@ export default class App extends Component {
             <Route path="/home">
                 <HomeLayout />
             </Route>
-            <Route>
-                <HomeLayout />
+            <Route path="/inscription">
+                <Inscription />
             </Route>
           </Switch>
         </div>

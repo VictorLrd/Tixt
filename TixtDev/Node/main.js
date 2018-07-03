@@ -2,6 +2,7 @@ var express = require('express');
 const mysql = require('mysql');
 var path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 
 //Connection BD
@@ -19,10 +20,12 @@ global.db = connection;
 var requete = require('./requete.js');
 var app = express();
 app.use(express.json());
+app.use(cors(process.env.ORIGIN, {withCredentials: true}));
 
 app.route('/voiture') 
   .get(function (req, res) {
     requete.allVehicule(function(err,result){ 
+        console.log(result);
         res.json(result);
     })
   })
@@ -31,10 +34,6 @@ app.route('/voiture')
         res.json(result);
     })
 });
-
-  app.get('/voiture' , function (req, res) {
-    res.json({ user: 'tobi' })
-})
 
 app.get('/login/:login.:mdp' , function (req, res) {
     requete.login(req.params.login, req.params.mdp, function(err,result) { 
@@ -92,5 +91,3 @@ var server = http.createServer(app);
 server.listen(4007);
 
 module.exports = app;
-
-

@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "",
   "scripts": {
-    "dev": "npm start main.js",
+    "dev": "node ./main.js",
     "start": "webpack-dev-server --hot --mode development ",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
@@ -31,9 +31,12 @@
   },
   "dependencies": {
     "antd": "^3.6.4",
+    "axios": "^0.18.0",
     "babel-preset-stage-1": "^6.1.18",
+    "cors": "^2.8.4",
     "lodash": "^3.10.1",
     "material-design-for-react": "0.0.109",
+    "mysql": "^2.15.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "5.0.7",
