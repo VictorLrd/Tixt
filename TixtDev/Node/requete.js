@@ -4,7 +4,7 @@ var router = express.Router();
 
 exports.signup = function (req, cb) {
   if (req == null){
-    cb(undefined,"Error");
+    cb("Error",undefined);
   }else {
     var post = req.body;
     var mail = post.mail;
@@ -22,10 +22,10 @@ exports.signup = function (req, cb) {
       if (results) {
         message = "Félicitation ! Vous avez votre compte !";
         console.log(message, results);
-        cb(undefined, results);
+        cb(undefined, JSON.parse(JSON.stringify(results)));
       } else {
         console.log(err);
-        cb(undefined,"Error");
+        cb("Error",undefined);
       }
     });
   }
@@ -44,17 +44,17 @@ exports.signup = function (req, cb) {
   }
 } */
 
-exports.login = function (mail, pass,cb) {
+exports.login = function (mail, pass, cb) {
   if (mail == null || pass == null){
-    cb(undefined,"Error");
+    cb("Error",undefined);
   }else {
     var sql = "SELECT * FROM `utilisateur` WHERE `mail`='" + mail + "' and mdp = '" + pass + "'";
     db.query(sql, function (err, results) {
       if (results) {
-        console.log(results);
-        cb(undefined, results);
+        console.log(JSON.parse(JSON.stringify(results)));
+        cb(undefined, JSON.parse(JSON.stringify(results)) );
       } else {
-        cb(undefined,"Error")
+        cb("Error",undefined)
       }
     });
   }
@@ -96,8 +96,8 @@ exports.updateUtilisateur = function(req, cb){
   var query = db.query(sql, function (err, result) {
     if (result) {
       message = "Vous update votre compte !";
-      console.log(message, result);
-      cb(undefined,result);
+      console.log(message, JSON.parse(JSON.stringify(result)));
+      cb(undefined,JSON.parse(JSON.stringify(result)));
     } else {
       console.log(err);
       cb("Error",undefined);
@@ -204,7 +204,7 @@ exports.VehiculeUtilisateur = function (utilisateurs_id, cb) {
 
   db.query(sql, function (err, results) {
     if (results) {
-      cb(undefined, results);
+      cb(undefined, JSON.parse(JSON.stringify(results)));
     } else {
       cb(undefined,"Error")
     }
@@ -245,7 +245,7 @@ exports.updateVehicule = function(req){
   var query = db.query(sql, function (err, result) {
     if (result) {
       console.log(result);
-      cb(undefined, result);
+      cb(undefined, JSON.parse(JSON.stringify(result)));
     } else {
       console.log(err);
       cb(undefined,"Error");

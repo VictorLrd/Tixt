@@ -27,51 +27,51 @@ app.route('/voiture')
     })
   })
   .post(function(req, res){
-    res.json(requete.addVoiture(req,function(err,result){ 
+    requete.addVoiture(req,function(err,result){ 
         res.json(result);
-    }));
+    })
 });
 
 app.get('/login/:login.:mdp' , function (req, res) {
-res.json(requete.login(req.params.login, req.params.mdp,function(err,result){ 
+    requete.login(req.params.login, req.params.mdp, function(err,result) { 
      res.json(result);
-  }));
+  })
 })
 
 app.post('/inscription' , function (req, res,) {
-res.json(requete.signup(req,function(err,result){ 
+    requete.signup(req,function(err,result){ 
     res.json(result);
-  }));
+  })
 })
 
 app.post('/updateUtilisateur', function (req, res) {
-  res.json(requete.updateUtilisateur(req,function(err,result){ 
+  requete.updateUtilisateur(req,function(err,result){ 
       res.json(result);
-  }));
+  })
 })
 
 app.get('/delUtilisateur/:id', function (req, res) {
-  res.json(requete.delUtilisateur(req.params.id,function(err,result){ 
+  requete.delUtilisateur(req.params.id,function(err,result){ 
       res.json(result);
-  }));
+  })
 })
 
 app.post('/updateVehicule', function (req, res,) {
-    res.json(requete.updateVehicule(req,function(err,result){ 
+    requete.updateVehicule(req,function(err,result){ 
         res.json(result);
-    }));
+    })
 })
 
 app.post('/delVoiture/:id', function (req, res) {
-    res.json(requete.delVoiture(rereq.params.id,function(err,result){ 
+    requete.delVoiture(rereq.params.id,function(err,result){ 
         res.json(result);
-    }));
+    })
 })
 
 app.get('/VehiculeUtilisateur/:id', function (req, res) {
-    res.json(requete.VehiculeUtilisateur(req.params.id, function(err,result){ 
+    requete.VehiculeUtilisateur(req.params.id, function(err,result){ 
         res.json(result);
-    }));
+    })
 })
 
 //Serveur en ecoute :
