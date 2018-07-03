@@ -20,13 +20,10 @@ var requete = require('./requete.js');
 var app = express();
 app.use(express.json());
 
-app.route('/voiture') 
-  .get(function (req, res) {
-    res.json(requete.allVehicule());
-  })
-  .post(function(req, res){
-    res.json(requete.addVoiture(req));
-  });
+
+  app.get('/voiture' , function (req, res) {
+    res.json({ user: 'tobi' })
+})
 
 app.get('/login/:login.:mdp' , function (req, res) {
   res.json(requete.login(req.params.login, req.params.mdp));

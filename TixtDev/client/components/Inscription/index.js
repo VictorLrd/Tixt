@@ -17,8 +17,8 @@ class Inscription extends React.Component {
 
     writeUser() {
 
-        return fetch('/Inscription').then(response => {
-            console.log("Hey c'est l'inscription");
+        return fetch('/voiture').then(response => {
+            console.log(response);
         }).catch(error => {
             console.error(error);
         });

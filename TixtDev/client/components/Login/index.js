@@ -1,64 +1,94 @@
-const React = require('react');
+import React, { Component } from 'react'
+import { Form, Input, DatePicker } from 'antd';
+const FormItem = Form.Item;
 
-class Login extends React.Component {
 
-    constructor() {
-        super();
-        this.writeUser = this.writeUser.bind(this);
-        this.keyDownHandler = this.keyDownHandler.bind(this);
-    }
 
-    //Méthode appelée dès que le composant est chargé 
-    //dans le navigateur
-    componentDidMount() {
-        this.mdpInput.focus();
-        this.emailInput.focus();
-    }
+class Login extends Component {
+  state = {
+    confirmDirty: false,
+    autoCompleteResult: [],
+  };
 
-    writeUser() {
+  render() {
 
-        return fetch('/barbero').then(response => {
-            console.log("dshjfnqdsjkfnsqdljkfnqdsjf");
-        }).catch(error => {
-            console.error(error);
-        });
-    }
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 },
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 },
+      },
+    };
 
-    keyDownHandler(event) {
-        //On lance la recherche si l'utilisateur 
-        //saisit la touche Enter
-        if (event.keyCode == 13) {
-            this.writeUser();
-        }
-    }
 
-    render() {
-        return React.createElement(
-            'div',
-            { className: 'form-group' },
-            React.createElement(
-                'div',
-                { className: 'input-group col-md-6' },
-                React.createElement('input', { type: 'text',
-                    className: 'form-control',
-                    ref: ref => this.emailInput = ref,
-                    placeholder: 'Email' }),
-                React.createElement('input', { type: 'text',
-                    className: 'form-control',
-                    ref: ref => this.mdpInput = ref,
-                    placeholder: 'Mot de passe' }),
-                React.createElement(
-                    'span',
-                    { className: 'input-group-btn' },
-                    React.createElement(
-                        'button',
-                        { onClick: this.writeUser, className: 'btn btn-primary', type: 'button' },
-                        React.createElement('span', { className: 'glyphicon glyphicon-search' })
-                    )
-                )
-            )
-        );
-    }
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <FormItem
+            {...formItemLayout}
+            label="E-mail"
+          >
+          <Input type="text" name="name" />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Mot de passe"
+        >
+        <Input type="password" />
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label="Prénom"
+          >
+          <Input type="text" name="name" />
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label="Nom"
+          >
+          <Input type="text" name="name" />
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label="Année de naissance"
+          >
+          <DatePicker />
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label="Adresse"
+          >
+          <Input type="text" name="name" />
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label="Code Postal"
+          >
+          <Input type="text" name="name" />
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label="Ville"
+          >
+          <Input type="text" name="name" />
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label="Pays"
+          >
+          <Input type="text" name="name" />
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label="Votre photo de profil"
+          >
+       </FormItem>
+      </Form>
+    );
+  }
 }
 
-module.exports = Login;
+
+export default Login;
