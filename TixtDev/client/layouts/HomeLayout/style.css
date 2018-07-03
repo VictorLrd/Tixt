@@ -1,1 +1,4 @@
-@import '~antd/dist/antd.css';
+.wrapper-home {
+    width: 100%;
+    height: 100%;
+}

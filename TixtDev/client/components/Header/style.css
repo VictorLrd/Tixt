@@ -5,7 +5,7 @@
     display: block;
 	position: relative;
   margin: 0 auto;
-  background: url(../img/visu.png) no-repeat center / cover;
+  background: url(../../media/img/visu.png) no-repeat center / cover;
   }
   .header .wrapperhead {
     max-width: 1024px;
@@ -17,7 +17,7 @@
     width: 200px;
     height: 100px;
     float: left;
-	background:url(../img/logo.png) no-repeat center / cover;
+	background:url(../../media/img/logo.png) no-repeat center / cover;
   }
   .header .menu {
     width: 50%;
