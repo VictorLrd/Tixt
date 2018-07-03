@@ -1,6 +1,6 @@
 # Back project TixT
 
-Partie back du projet Tixt. Api permettant de récupérer des donnée d’une base de donnée MySQL.
+Partie back du projet Tixt. Api permettant de récupérer des données d’une base de donnée MySQL.
 
 ## 1 - Installation
 
