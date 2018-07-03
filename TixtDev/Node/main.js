@@ -29,13 +29,33 @@ app.route('/voiture')
   });
 
 app.get('/login/:login.:mdp' , function (req, res) {
-  res.json(requete.login(req.login, req.mdp));
+  res.json(requete.login(req.params.login, req.params.mdp));
 })
 
-app.get('/inscription' , function (req, res) {
+app.post('/inscription' , function (req, res) {
   res.json(requete.signup(req));
 })
 
+app.post('/updateUtilisateur', function (req, res) {
+    res.json(requete.updateUtilisateur(req));
+})
+
+app.get('/delUtilisateur/:id', function (req, res) {
+    res.json(requete.delUtilisateur(req.params.id));
+})
+
+app.post('/updateVehicule', function (req, res) {
+    res.json(requete.updateVehicule(req));
+})
+
+app.post('/delVoiture/:id', function (req, res) {
+    res.json(requete.delVoiture(rereq.params.id));
+})
+
+
+app.get('/VehiculeUtilisateur', function (req, res) {
+    res.json(requete.VehiculeUtilisateur(req.params.id));
+})
 
 //Serveur en ecoute :
 var http = require('http');
