@@ -15,10 +15,10 @@ Renseigner les paramètres de connexion à la base de donnée dans un fichier co
 ```json
 {
 	"mysql": {
-		"host": "localhost",
-		"user": "root",
+		"host": "",
+		"user": "",
 		"password": "",
-		"database": "d_tixt"
+		"database": ""
 	}
 }
 ```
@@ -30,14 +30,10 @@ Renseigner les paramètres de connexion à la base de donnée dans un fichier co
    
 ## 2 - Api
 
-	Deuxième projet qui est un bot discord, le projet et de récupérer  
-	les statistiques d'un joueur a travers d'une api pour créer une image 
-	l'upload sur imgur et la renvoyer sur le discord pour que l'utilisateur 
-	puisse la récupérer a n'importe quel moment
-
 > Post /inscription
 	
-	Ajoute un utilisateur a la base de donnée en envoyant :
+Ajoute un utilisateur a la base de donnée en envoyant :
+
 ```json
 {
 "body": {
@@ -55,11 +51,11 @@ Renseigner les paramètres de connexion à la base de donnée dans un fichier co
 ```
 > Get /login/:login.:mdp
 
-	Retourne l'utilisateur correspondant a l'id et au mots de passe
+Retourne l'utilisateur correspondant a l'id et au mots de passe
 
 > Get /updateUtilisateur
 
-	Modifie un utilisateur enregistrer dans la base de donnée en envoyant :
+Modifie un utilisateur enregistrer dans la base de donnée en envoyant :
 
 ```json
 {
@@ -79,15 +75,15 @@ Renseigner les paramètres de connexion à la base de donnée dans un fichier co
 ```
 > Get /delUtilisateur/:id
 
-	Supprime l'utilisateur enregistrer dans la base de donnée
+Supprime l'utilisateur enregistrer dans la base de donnée
 
 > Get /voiture
 
-	Retourne la liste de tous les véhicules 
+Retourne la liste de tous les véhicules 
 
 > Post /voiture
 
-	Ajoute un véhicule associé a un utilisateur a la base de donnée en envoyant :
+Ajoute un véhicule associé a un utilisateur a la base de donnée en envoyant :
 
 ```json
 "body": 
@@ -111,7 +107,8 @@ Renseigner les paramètres de connexion à la base de donnée dans un fichier co
 ```
 > Post /updateVehicule
 
-	Modifie un véhicule enregistrer dans la base de donnée en envoyant :
+Modifie un véhicule enregistrer dans la base de donnée en envoyant :
+
 ```Json
 {
 "body": {
@@ -136,8 +133,8 @@ Renseigner les paramètres de connexion à la base de donnée dans un fichier co
 
  > Get /delVoiture/:id
 
-	Supprime la voiture enregistrer dans la base de donnée
+Supprime la voiture enregistrer dans la base de donnée
 
 > Get /VehiculeUtilisateur/:id
 
-    Retourne la liste de tous les véhicules de l'utilsateur id
+Retourne la liste de tous les véhicules de l'utilsateur id

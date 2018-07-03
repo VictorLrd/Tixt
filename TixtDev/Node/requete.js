@@ -119,7 +119,6 @@ exports.updateUtilisateur = function(req){
   "utilisateurs_id" : ""
 } */
 
-
 exports.addVehicule= function (req) {
   if (req == null){
     return("Error");
