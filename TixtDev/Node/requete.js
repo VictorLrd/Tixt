@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-exports.signup = function (req) {
+
+exports.signup = function (req, cb) {
   if (req == null){
-    return("Error");
+    cb(undefined,"Error");
   }else {
     var post = req.body;
     var mail = post.mail;
@@ -21,10 +22,10 @@ exports.signup = function (req) {
       if (results) {
         message = "Félicitation ! Vous avez votre compte !";
         console.log(message, results);
-        return results;
+        cb(undefined, results);
       } else {
         console.log(err);
-        return("Error");
+        cb(undefined,"Error");
       }
     });
   }
@@ -43,37 +44,37 @@ exports.signup = function (req) {
   }
 } */
 
-exports.login = function (mail, pass) {
+exports.login = function (mail, pass,cb) {
   if (mail == null || pass == null){
-    return("Error");
+    cb(undefined,"Error");
   }else {
     var sql = "SELECT * FROM `utilisateur` WHERE `mail`='" + mail + "' and mdp = '" + pass + "'";
     db.query(sql, function (err, results) {
       if (results) {
         console.log(results);
-        return results;
+        cb(undefined, results);
       } else {
-        return("Error")
+        cb(undefined,"Error")
       }
     });
   }
 };
 
-exports.delUtilisateur = function(utilisateurs_id){
+exports.delUtilisateur = function(utilisateurs_id, cb){
   if (utilisateurs_id == null){
-    return("Error");
+    cb(undefined,"Error");
   }else {
   var sql = "DELETE FROM utilisateur WHERE utilisateurs_id = '"+ utilisateurs_id + "'";
   db.query(sql, function (err, result) {
     if (err) throw err;
-    console.log("del");
+    cb(undefined,"del");
   });
 }
 };
 
-exports.updateUtilisateur = function(req){
+exports.updateUtilisateur = function(req, cb){
   if (req == null){
-    return("Error");
+    cb(undefined,"Error");
   }else {
   id = req.utilisateurs_id;
   req = req.body;
@@ -96,10 +97,10 @@ exports.updateUtilisateur = function(req){
     if (result) {
       message = "Vous update votre compte !";
       console.log(message, result);
-      return result;
+      cb(undefined,result);
     } else {
       console.log(err);
-      return("Error");
+      cb("Error",undefined);
     }
   });
 }
@@ -119,9 +120,9 @@ exports.updateUtilisateur = function(req){
   "utilisateurs_id" : ""
 } */
 
-exports.addVehicule= function (req) {
+exports.addVehicule= function (req, cb) {
   if (req == null){
-    return("Error");
+    cb(undefined,"Error");
   }else {
     var post = req.body;
     var marque = post.marque;
@@ -150,7 +151,7 @@ exports.addVehicule= function (req) {
         loop = new Date(newDate);
       }
       message = "Félicitation ! Vous avez ajouter votre véhicule !";
-      return message;
+      cb(undefined,message);
     });
   }
 };
@@ -173,42 +174,39 @@ exports.addVehicule= function (req) {
   "utilisateurs_id": ""
 } */
 
-exports.delVoiture = function(voiture_id){
+exports.delVoiture = function(voiture_id,cb){
   if (voiture_id == null){
-    return("Error");
+    cb(undefined,"Error");
   }else {
   var sql = "DELETE FROM utilisateur WHERE voiture_id = '"+ voiture_id + "'";
   db.query(sql, function (err, result) {
     if (err) throw err;
-    console.log("del");
+    cb(undefined,"del")
   });
 }
 };
 
-exports.allVehicule = function () {
+exports.allVehicule = function (cb) {
 
   var sql = "SELECT * FROM `voiture`";
-
   db.query(sql, function (err, results) {
     if (err) throw err;
-    console.log(results);
-    return results;
-  });
+      cb(undefined, JSON.parse(JSON.stringify(results)) );
+    });
 };
 
 
-exports.VehiculeUtilisateur = function (utilisateurs_id) {
+exports.VehiculeUtilisateur = function (utilisateurs_id, cb) {
   if (utilisateurs_id == null){
-    return("Error");
+    cb(undefined,"Error");
   }else {
   var sql = "SELECT * FROM `voiture` WHERE utilisateurs_id = '" + utilisateurs_id + "' ";
 
   db.query(sql, function (err, results) {
     if (results) {
-      console.log(results);
-      return results;
+      cb(undefined, results);
     } else {
-      return("Error")
+      cb(undefined,"Error")
     }
   });
 }
@@ -216,7 +214,7 @@ exports.VehiculeUtilisateur = function (utilisateurs_id) {
 
 exports.updateVehicule = function(req){
   if (req == null){
-    return("Error");
+    cb(undefined,"Error");
   }else {
   var post = req.body;
   var marque = post.marque;
@@ -247,10 +245,10 @@ exports.updateVehicule = function(req){
   var query = db.query(sql, function (err, result) {
     if (result) {
       console.log(result);
-      return result;
+      cb(undefined, result);
     } else {
       console.log(err);
-      return("Error");
+      cb(undefined,"Error");
     }
   });
 }
@@ -323,3 +321,70 @@ var req = {
 }
 
 
+
+
+{ test:
+  [ { voiture_id: 1,
+      utilisateurs_id: 2,
+      marque: 'Bentz',
+      modele: 'bb',
+      annee: '2018-06-26T22:00:00.000Z',
+      km: 69,
+      nb_place: 2,
+      energie: 'elect',
+      boite_vitesse: '4',
+      adresse: 'azdqs',
+      prix: 50000,
+      contact: '07332',
+      photos: null,
+      date_debut: '2018-06-13T22:00:00.000Z',
+      date_fin: '2018-06-13T22:00:00.000Z',
+      description: 'dzacqdsvsqxwzcaezqss' },
+    { voiture_id: 2,
+      utilisateurs_id: 2,
+      marque: 'Freari',
+      modele: 'bb',
+      annee: '2018-06-26T22:00:00.000Z',
+      km: 69,
+      nb_place: 2,
+      energie: 'elect',
+      boite_vitesse: '4',
+      adresse: 'azdqs',
+      prix: 50000,
+      contact: '07332',
+      photos: null,
+      date_debut: '2018-06-13T22:00:00.000Z',
+      date_fin: '2018-06-13T22:00:00.000Z',
+      description: 'dzacqdsvsqxwzcaezqss' },
+    { voiture_id: 3,
+      utilisateurs_id: 1,
+      marque: 'Porche',
+      modele: 'bb',
+      annee: '2018-06-26T22:00:00.000Z',
+      km: 69,
+      nb_place: 2,
+      energie: 'elect',
+      boite_vitesse: '4',
+      adresse: 'azdqs',
+      prix: 50000,
+      contact: '07332',
+      photos: null,
+      date_debut: '2018-06-13T22:00:00.000Z',
+      date_fin: '2018-06-13T22:00:00.000Z',
+      description: 'dzacqdsvsqxwzcaezqss' },
+    { voiture_id: 4,
+      utilisateurs_id: 2,
+      marque: 'citro',
+      modele: 'c3',
+      annee: '2000-10-22T22:00:00.000Z',
+      km: 100000,
+      nb_place: 5,
+      energie: 'essence',
+      boite_vitesse: 'manuel',
+      adresse: 'dqsdqda',
+      prix: 25,
+      contact: '321332',
+      photos: [Object],
+      date_debut: '2018-09-30T22:00:00.000Z',
+      date_fin: '2019-12-31T23:00:00.000Z',
+      description: 'voiture de location' } ] }
